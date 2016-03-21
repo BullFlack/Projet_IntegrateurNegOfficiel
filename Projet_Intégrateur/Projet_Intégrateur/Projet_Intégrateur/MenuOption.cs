@@ -18,7 +18,7 @@ namespace AtelierXNA
     public class MenuOption : FenêtreDeControle
     {
         const float INTERVALLE_MAJ_STANDARD = 1f / 60f;
-        const int DIMENSION_TERRAIN = 256;
+        const int DIMENSION_TERRAIN = 512;
         const int NB_ZONES_DIALOGUE = 3; //Cette constante doit valoir 3 au minimum
         string NomImageFond { get; set; }
         Rectangle RectangleDialogue { get; set; }
@@ -77,9 +77,13 @@ namespace AtelierXNA
             Game.Components.Remove(BtnDémarrer);
             Game.Components.Remove(BtnQuitter);
             Game.Components.Remove(this);
-            Game.Components.Add(LeJeu);
+            foreach (Caméra caméra in Game.Components.Where(x => x is Caméra))
+            {
+                caméra.Enabled = true;
+            }
+            //Game.Components.Add(LeJeu);
             Game.Components.Add(new TuileTexturéeVertical(Game, 3, 1f, Vector3.Zero, new Vector3(54.49f, 2.71f, 48f), new Vector2(13.7f, 4.75f), "MurIntérieurPavillon", INTERVALLE_MAJ_STANDARD));
-            Game.Components.Add(new Terrain(Game, 1f, Vector3.Zero, Vector3.Zero, new Vector3(DIMENSION_TERRAIN, 3, DIMENSION_TERRAIN), "LionelEssai4", "TextureEssai2", 3, INTERVALLE_MAJ_STANDARD));
+            //Game.Components.Add(new Terrain(Game, 1f, Vector3.Zero, Vector3.Zero, new Vector3(DIMENSION_TERRAIN, 3, DIMENSION_TERRAIN), "LionelEssai4", "TextureEssai2", 3, INTERVALLE_MAJ_STANDARD));
             Game.Components.Add(new PlanTexturé(Game, 1f, new Vector3(0, MathHelper.PiOver2, 0), new Vector3(-DIMENSION_TERRAIN / 2, DIMENSION_TERRAIN / 2, 0), étenduePlan, charpentePlan, "CielGauche", INTERVALLE_MAJ_STANDARD));
             Game.Components.Add(new PlanTexturé(Game, 1f, new Vector3(0, -MathHelper.PiOver2, 0), new Vector3(DIMENSION_TERRAIN / 2, DIMENSION_TERRAIN / 2, 0), étenduePlan, charpentePlan, "CielDroite", INTERVALLE_MAJ_STANDARD));
             Game.Components.Add(new PlanTexturé(Game, 1f, Vector3.Zero, new Vector3(0, DIMENSION_TERRAIN / 2, -DIMENSION_TERRAIN / 2), étenduePlan, charpentePlan, "CielAvant", INTERVALLE_MAJ_STANDARD));
