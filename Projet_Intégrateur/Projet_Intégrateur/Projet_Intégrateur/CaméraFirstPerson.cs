@@ -25,7 +25,6 @@ namespace AtelierXNA
         Vector3 Latéral { get; set; }
         Texture2D CarteTerrain { get; set; }
         RessourcesManager<Texture2D> GestionnaireDeTextures { get; set; }
-        string NomCarterTerrain { get; set; }
         Vector3 Orientation { get; set; }
         Color[] DataTexture { get; set; }
         float VitesseTranslation { get; set; }
@@ -58,10 +57,9 @@ namespace AtelierXNA
             }
         }
 
-        public CaméraFirstPerson(Game jeu, Vector3 positionCaméra, Vector3 cible, Vector3 orientation, float intervalleMAJ, string nomcarteterrain)
+        public CaméraFirstPerson(Game jeu, Vector3 positionCaméra, Vector3 cible, Vector3 orientation, float intervalleMAJ)
             : base(jeu)
         {
-            NomCarterTerrain = nomcarteterrain;
             IntervalleMAJ = intervalleMAJ;
             CréerVolumeDeVisualisation(OUVERTURE_OBJECTIF, DISTANCE_PLAN_RAPPROCHÉ, DISTANCE_PLAN_ÉLOIGNÉ);
             CréerPointDeVue(positionCaméra, cible, orientation);

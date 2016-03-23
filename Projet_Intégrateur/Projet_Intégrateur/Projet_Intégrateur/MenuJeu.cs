@@ -98,7 +98,6 @@ namespace AtelierXNA
 
         public void GérerModeCaméra()
         {
-
         }
         public void GérerPause()
         {

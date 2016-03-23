@@ -52,7 +52,7 @@ namespace AtelierXNA
           GestionnaireDeShaders = new RessourcesManager<Effect>(this, "Effects");
           GestionInput = new InputManager(this);
           TerrainJeu = new Terrain(this, 1f, Vector3.Zero, Vector3.Zero, new Vector3(DIMENSION_TERRAIN, 3, DIMENSION_TERRAIN), "LionelEssai4", "TextureEssai2", 3, INTERVALLE_MAJ_STANDARD);
-          CaméraJeu = new CaméraSubjective(this, positionCaméra, cibleCaméra, Vector3.Up, INTERVALLE_MAJ_STANDARD);
+          CaméraJeu = new CaméraFirstPerson(this, positionCaméra, cibleCaméra, Vector3.Up, INTERVALLE_MAJ_STANDARD);
           Components.Add(GestionInput);
           Components.Add(TerrainJeu);
           Components.Add(CaméraJeu);
